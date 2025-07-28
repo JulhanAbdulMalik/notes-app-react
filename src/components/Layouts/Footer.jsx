@@ -6,7 +6,7 @@ function Footer() {
       </p>
       <div class="footer-links">
         <a
-          href="https://github.com"
+          href="https://github.com/JulhanAbdulMalik/notes-app-react.git"
           target="_blank"
           rel="noopener noreferrer"
           title="GitHub"
