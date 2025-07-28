@@ -1,0 +1,298 @@
+:root {
+  --background: #111827;
+  --surface: #1f2937;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border: #374151;
+  --delete: #ef4444;
+  --delete-hover-bg: rgba(239, 68, 68, 0.1);
+  --archive: #f59e0b;
+  --archive-hover-bg: rgba(245, 158, 11, 0.1);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Input & Textarea dengan Gaya Modern --- */
+input,
+textarea {
+  padding: 14px;
+  margin: 12px 0;
+  font-family: "Inter", sans-serif;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-secondary);
+  font-weight: normal;
+}
+
+/* --- Header Aplikasi --- */
+.note-app__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border-bottom: 1px solid var(--border);
+  background-color: rgba(31, 41, 55, 0.5); /* Efek sedikit transparan */
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.note-app__header h1 {
+  margin: 0;
+  flex: 1;
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* --- Body & Layout Utama --- */
+.note-app__body {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 16px;
+}
+
+.note-app__body h2 {
+  font-weight: 500;
+  margin: 16px 0 24px 0;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+/* --- Form Input Catatan --- */
+.note-input {
+  margin: 0 auto;
+  max-width: 550px;
+  margin-bottom: 64px;
+  background-color: var(--surface);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.note-input__title__char-limit {
+  font-size: 14px;
+  text-align: right;
+  color: var(--text-secondary);
+}
+
+.note-input__body {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.note-input button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background-color: var(--primary);
+  font-family: "Inter", sans-serif;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.note-input button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Daftar Catatan (Grid) --- */
+.notes-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.notes-list__empty-message {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 48px;
+}
+
+/* --- Item Catatan (Kartu) --- */
+.note-item {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.note-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-color: var(--border);
+}
+
+.note-item__content {
+  padding: 16px;
+  flex: 1; /* Membuat konten mengisi ruang yang tersedia */
+}
+
+.note-item__title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+}
+
+.note-item__date {
+  font-size: 12px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+}
+
+.note-item__body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+.note-item__action {
+  display: flex;
+  border-top: 1px solid var(--border);
+}
+
+.note-item__delete-button,
+.note-item__archive-button {
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  padding: 12px 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.note-item__delete-button {
+  border-right: 1px solid var(--border);
+  color: var(--delete);
+}
+
+.note-item__archive-button {
+  color: var(--archive);
+}
+
+.note-item__delete-button:hover {
+  background-color: var(--delete-hover-bg);
+}
+
+.note-item__archive-button:hover {
+  background-color: var(--archive-hover-bg);
+}
+
+/* --- Footer --- */
+footer {
+  width: 100%;
+  padding: 2rem 0;
+  margin-top: 48px; /* Memberi jarak dari konten di atasnya */
+  background-color: var(--surface); /* Warna yang sama dengan kartu */
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary); /* Teks di footer tidak terlalu menonjol */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px; /* Padding horizontal agar tidak menempel di tepi layar kecil */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Agar responsif di layar kecil */
+  gap: 16px; /* Jarak antara teks dan ikon jika posisinya vertikal */
+  padding-bottom: 1.8rem;
+}
+
+.footer-text {
+  font-size: 14px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Jarak antar ikon */
+}
+
+.footer-links a {
+  color: var(--text-secondary); /* Warna ikon default */
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary); /* Warna ikon saat di-hover (menggunakan warna aksen) */
+}
+
+/* Mengatur agar ikon SVG mewarisi warna dari tag <a> induknya */
+.footer-links svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* --- Tampilan Responsif --- */
+
+/* Tablet (2 kolom) */
+@media only screen and (min-width: 640px) {
+  .notes-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptop kecil (3 kolom) */
+@media only screen and (min-width: 900px) {
+  .notes-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .note-search input {
+    min-width: 400px;
+  }
+}
+
+/* Laptop/Desktop besar (4 kolom) */
+@media only screen and (min-width: 1200px) {
+  .notes-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
